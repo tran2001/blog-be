@@ -11,6 +11,9 @@ dependencies:
   bcrypt:
     specifier: ^5.1.1
     version: registry.npmmirror.com/bcrypt@5.1.1
+  cors:
+    specifier: ^2.8.5
+    version: registry.npmmirror.com/cors@2.8.5
   dotenv:
     specifier: ^16.4.5
     version: registry.npmmirror.com/dotenv@16.4.5
@@ -2593,6 +2596,16 @@ packages:
     version: 3.37.1
     requiresBuild: true
     dev: true
+
+  registry.npmmirror.com/cors@2.8.5:
+    resolution: {integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cors/-/cors-2.8.5.tgz}
+    name: cors
+    version: 2.8.5
+    engines: {node: '>= 0.10'}
+    dependencies:
+      object-assign: registry.npmmirror.com/object-assign@4.1.1
+      vary: registry.npmmirror.com/vary@1.1.2
+    dev: false
 
   registry.npmmirror.com/cross-spawn@6.0.5:
     resolution: {integrity: sha512-eTVLrBSt7fjbDygz805pMnstIs2VTBNkRm0qxZd+M7A5XDdxVRWO5MxGBXZhjY4cqLYLdtrGqRf8mBPmzwSpWQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cross-spawn/-/cross-spawn-6.0.5.tgz}

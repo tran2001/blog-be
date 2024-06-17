@@ -1,5 +1,6 @@
 import express from "express";
 import authRouter from "./auth/auth.router.js";
+import blogRouter from "./blog/blog.router.js";
 
 const router = express.Router();
 
@@ -13,4 +14,6 @@ export const routers = (app) => {
 
   //User Router
   authRouter(router);
+
+  blogRouter(router)
 };

@@ -4,13 +4,21 @@ import { routers } from "./src/routers/index.router.js";
 import helmet from "helmet";
 import morgan from "morgan";
 import connectDatabase from "./lib/database.js";
+import cors from "cors";
 
 const app = express();
 const port = Number(process.env.PORT) || 8080;
 
-app.use(express.json())
+const corsOptions = {
+  origin: "http://localhost:5173",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+
+app.use(express.json());
 app.use(helmet());
-// app.use(morgan('dev'))
+app.use(cors(corsOptions));
+app.use(morgan('dev'))
 routers(app);
 
 connectDatabase();

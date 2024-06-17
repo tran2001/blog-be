@@ -4,12 +4,13 @@ import Email from "email-templates";
 import hbs from "nodemailer-express-handlebars";
 import { fileURLToPath } from "url";
 import path from "path";
+import { generateAccessToken } from "../../middlewares/jwt.middleware.js";
+import bcrypt from "bcrypt";
 
 const signinService = async (payload) => {
   const res = {
     statusCode: 200,
     message: "Login successfully!",
-    data: {},
   };
   try {
     const { email, password } = payload;
@@ -18,6 +19,16 @@ const signinService = async (payload) => {
       res.statusCode = 401;
       res.message = "Account doesn't exist!";
       return res;
+    }
+    if (existedUser) {
+      if (!bcrypt.compareSync(password, existedUser.password)) {
+        res.statusCode = 401;
+        res.message = "Wrong password!";
+        return res;
+      } else {
+        res.accessToken = generateAccessToken(existedUser);
+        return res;
+      }
     }
   } catch (error) {
     console.log(error.message);
