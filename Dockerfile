@@ -1,14 +1,13 @@
 FROM node:20
 
-WORKDIR /usr/app
+WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm i
+RUN npm install
 
-# Bundle app source
 COPY . .
 
-# EXPOSE 8005
+EXPOSE 8080
 
-# CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "dev"]
