@@ -10,7 +10,7 @@ const app = express();
 const port = Number(process.env.PORT) || 8080;
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "http://localhost:5173",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
