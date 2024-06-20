@@ -81,8 +81,8 @@ const signupService = async (payload) => {
     //send mail with options
     const mail = {
       from: process.env.MAIL,
-      to: "tran2001123@gmail.com",
-      subject: "Ciao",
+      to: email,
+      subject: `Ciao ${fullName}, welcome to our website!`,
       template: "email",
       context: {
         name: "Name",
