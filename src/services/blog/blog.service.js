@@ -63,19 +63,12 @@ const commentBlogService = async (payload) => {
 };
 
 const getAllBlogService = async () => {
-  const res = {
+  const blog = await BlogModel.find().lean();
+  return {
     statusCode: 200,
     message: "Get all blog successfully",
-    data: {},
+    data: blog,
   };
-  try {
-    const blog = await BlogModel.find();
-    res.data = blog;
-  } catch (error) {
-    res.statusCode = 400;
-    res.message = error.message;
-  }
-  return res;
 };
 
 const getOneBlogService = async (payload) => {
@@ -86,10 +79,12 @@ const getOneBlogService = async (payload) => {
   };
   try {
     const blogId = payload;
-    const blog = await BlogModel.findById(blogId).populate({
-      path: "commentIds",
-      populate: { path: "user" },
-    }).lean();
+    const blog = await BlogModel.findById(blogId)
+      .populate({
+        path: "commentIds",
+        populate: { path: "user" },
+      })
+      .lean();
     res.data = blog;
   } catch (error) {
     res.statusCode = 400;
