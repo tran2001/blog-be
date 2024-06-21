@@ -8,9 +8,16 @@ import bodyParser from "body-parser";
 
 const app = express();
 const port = Number(process.env.PORT) || 8080;
+const allowedOrigins = ["https://eggogia.space", "http://localhost:5173/"];
 
 const corsOptions = {
-  origin: "https://eggogia.space",
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
   optionSuccessStatus: 200,
 };
