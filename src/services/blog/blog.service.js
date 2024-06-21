@@ -63,7 +63,13 @@ const commentBlogService = async (payload) => {
 };
 
 const getAllBlogService = async () => {
+  console.time("getAllBlogService");
   const blog = await BlogModel.find().lean();
+  console.timeEnd("getAllBlogService");
+  console.time("getAllBlogService2");
+  const blog2 = await BlogModel.find();
+  console.timeEnd("getAllBlogService2");
+
   return {
     statusCode: 200,
     message: "Get all blog successfully",
