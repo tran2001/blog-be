@@ -34,13 +34,12 @@ const updateBlogController = async (req, res) => {
 };
 
 const commentBlogController = async (req, res) => {
-  const { content, user, time } = await req.body;
+  const { content, user } = await req.body;
   const { blogId } = await req.params;
   const blogServiceResponse = await commentBlogService({
     blogId,
     content,
     user,
-    time,
   });
   return res.status(200).json(blogServiceResponse);
 };

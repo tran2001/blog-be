@@ -46,8 +46,10 @@ const commentBlogService = async (payload) => {
     message: "Comment blog successfully",
     data: {},
   };
+  let time = new Date();
+  console.log(time)
   try {
-    const { content, user, time, blogId } = payload;
+    const { content, user, blogId } = payload;
     const requirements = { content, user, time };
     const comment = await CommentModel.create(requirements);
     await BlogModel.updateOne(
@@ -88,7 +90,7 @@ const getOneBlogService = async (payload) => {
     res.data = blog;
   } catch (error) {
     res.statusCode = 400;
-    res.message = error.message;
+    res.message = error.message; 
   }
   return res;
 };

@@ -9,12 +9,11 @@ import compression from "compression";
 
 const app = express();
 const port = Number(process.env.PORT) || 8080;
-const allowedOrigins = ["https://eggogia.space", "http://localhost:5173"];
+const allowedOrigins = process.env.CORS.split(",");
 
 const corsOptions = {
   origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      console.log(origin);
+    if (allowedOrigins.map((el) => el.trim()).indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
